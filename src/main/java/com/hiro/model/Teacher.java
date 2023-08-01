@@ -1,9 +1,6 @@
 package com.hiro.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,10 +14,11 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
  * @Version v1.0
  * @YouTube @sidof8065
  */
-@Data @Builder @NoArgsConstructor @AllArgsConstructor @Entity
+@Data @NoArgsConstructor @AllArgsConstructor @Entity @Table
 public class Teacher {
-    @SequenceGenerator(name = "sequence_teache_id",allocationSize = 1,sequenceName = "sequence_teache_id")
-    @GeneratedValue(generator = "sequence_enroll_id",strategy = SEQUENCE)
+    @SequenceGenerator(name = "teacher_sequence", allocationSize = 1,
+            sequenceName = "teacher_sequence")
+    @GeneratedValue(generator = "teacher_sequence",strategy = SEQUENCE)
     @Id
     private Long id;
     private String firstName;
