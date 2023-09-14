@@ -1,9 +1,7 @@
 package com.hiro.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +21,10 @@ public class Answer {
     @GeneratedValue(generator = "sequence_answer_id",strategy = SEQUENCE)
     @Id
     private Long id;
+    @Column(unique = true)@NotNull(message = "The response can't be empty")
     private String response;
     private int point;
+    @ManyToOne
+    @JoinColumn(name = "question_id",referencedColumnName = "id",nullable = false, foreignKey = @ForeignKey(name = "answer_question"))
+    private Question question;
 }

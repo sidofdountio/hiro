@@ -1,9 +1,8 @@
 package com.hiro.api;
 
 import com.hiro.model.Course;
-import com.hiro.service.CourseServiceInplemen;
+import com.hiro.service.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +18,10 @@ import static org.springframework.http.HttpStatus.*;
  */
 @RestController
 @RequestMapping("api/v1/hiro/admin/course")
-@CrossOrigin(origins = "http://localhost:4200",originPatterns = "http://localhost:9000",maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
 @RequiredArgsConstructor
 public class CourseApi {
-    private final CourseServiceInplemen courseServiceInplemen;
+    private final CourseService courseServiceInplemen;
 
     @GetMapping
     public ResponseEntity<List<Course>>courseList(){

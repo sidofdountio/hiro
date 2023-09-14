@@ -1,8 +1,8 @@
 application:
-  title: Hiro by Donation
+  title: Hiro
   version: 1.0
 server:
-  port: ${SERVER_PORT}
+  port: ${SERVER_PORT:8080}
   error:
     include-message: always
   servlet:
@@ -17,9 +17,9 @@ spring:
     active: ${ACTIVE_PROFILE:dev}
 
   datasource:
-    url: jdbc:postgresql://localhost:5332/apphiro
-    username: sidof
-    password: sidof1/@
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
